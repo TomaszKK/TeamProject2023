@@ -1,4 +1,4 @@
-package p.lodz.pl.teamproject_back;
+package p.lodz.teamproject_back;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

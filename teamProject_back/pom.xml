@@ -8,7 +8,7 @@
 		<version>3.0.6</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>p.lodz.pl</groupId>
+	<groupId>p.lodz</groupId>
 	<artifactId>teamProject_back</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>teamProject_back</name>
