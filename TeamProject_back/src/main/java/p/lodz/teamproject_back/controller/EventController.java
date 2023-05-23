@@ -11,6 +11,7 @@ import java.util.List;
 @Controller
 @RequestMapping
 public class EventController {
+<<<<<<< HEAD
    private EventRepository eventRepository;
 
    @Autowired
@@ -63,4 +64,7 @@ public class EventController {
         eventToUpdate.setOrganizerWebsite(event.getOrganizerWebsite());
         return eventRepository.save(eventToUpdate);
     }
+=======
+//    branch test
+>>>>>>> main
 }

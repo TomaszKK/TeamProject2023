@@ -6,7 +6,7 @@ import {CompanyComponent} from "./company/company.component";
 
 
 const routes: Routes = [
-  { path: 'calander', component: CalanderComponent },
+  { path: 'calender', component: CalanderComponent },
   {path: 'company', component: CompanyComponent}
 
 ];
