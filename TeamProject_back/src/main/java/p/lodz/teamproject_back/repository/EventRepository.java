@@ -1,2 +1,4 @@
-package p.lodz.teamproject_back.repository;public interface EventRepository {
+package p.lodz.teamproject_back.repository;
+
+public interface EventRepository {
 }
