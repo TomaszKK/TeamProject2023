@@ -1,1 +1,20 @@
-<p>event works!</p>
+<html>
+<head>
+  <style>
+div {
+background-color: lightgrey;
+width: 200px;
+border: 8px solid mediumpurple;
+padding: 10px;
+margin: 15px;
+}
+</style>
+</head>
+<body>
+
+
+
+<div *ngFor="let event of events"><h3>Name: {{event.name}}</h3>
+<span>id: </span>{{event.id}}<br>
+<span>Time: </span>{{event.time}}</div>
+
