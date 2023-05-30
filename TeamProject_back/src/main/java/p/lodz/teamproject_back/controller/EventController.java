@@ -33,7 +33,7 @@ public class EventController {
     }
 
     @PostMapping
-    public ResponseEntity<Event> addEvent(Event event) {
+    public ResponseEntity<Event> addEvent(@RequestBody Event event) {
         eventRepository.save(event);
         return new ResponseEntity<Event>(event, HttpStatus.CREATED);
     }
@@ -45,7 +45,7 @@ public class EventController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Event> deleteEventById(Long id) {
+    public ResponseEntity<Event> deleteEventById(@PathVariable("id") long id) {
         eventRepository.deleteById(id);
         return ResponseEntity.noContent().build();
     }

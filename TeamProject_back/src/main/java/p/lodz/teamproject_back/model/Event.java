@@ -10,6 +10,7 @@ public class Event {
     @Id
     @GeneratedValue
     private Long id;
+    private EventEnum type;
     private String name;
     private String description;
     private String date;
@@ -64,6 +65,10 @@ public class Event {
         return organizer;
     }
 
+    public EventEnum getType() {
+        return type;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -108,7 +113,7 @@ public class Event {
         this.scheduleList = scheduleList;
     }
 
-
-
-
+    public void setType(EventEnum type) {
+        this.type = type;
+    }
 }

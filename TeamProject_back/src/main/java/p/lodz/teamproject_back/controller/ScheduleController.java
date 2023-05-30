@@ -20,30 +20,30 @@ public class ScheduleController {
         this.scheduleRepository = scheduleRepository;
     }
 
-    @GetMapping("/schedule")
+    @GetMapping
     public List<Schedule> getSchedules() {
         return scheduleRepository.findAll();
     }
 
-    @GetMapping("/schedule/{id}")
+    @GetMapping("/{id}")
     public Optional<Schedule> getScheduleById(Long id) {
         return scheduleRepository.findById(id);
     }
 
     @PostMapping
-    public ResponseEntity<Schedule> addSchedule(Schedule schedule) {
+    public ResponseEntity<Schedule> addSchedule(@RequestBody Schedule schedule) {
         scheduleRepository.save(schedule);
         return new ResponseEntity<Schedule>(schedule, HttpStatus.CREATED);
     }
 
-    @DeleteMapping("/schedule")
+    @DeleteMapping
     public ResponseEntity<Schedule> deleteAllSchedules() {
         scheduleRepository.deleteAll();
         return new ResponseEntity<Schedule>(HttpStatus.NO_CONTENT);
     }
 
-    @DeleteMapping("/schedule/{id}")
-    public ResponseEntity<Schedule> deleteScheduleById(Long id) {
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Schedule> deleteScheduleById(@PathVariable("id") long id) {
         scheduleRepository.deleteById(id);
         return new ResponseEntity<Schedule>(HttpStatus.NO_CONTENT);
     }

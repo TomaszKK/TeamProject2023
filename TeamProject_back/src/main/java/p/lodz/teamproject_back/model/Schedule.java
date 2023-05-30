@@ -20,7 +20,7 @@ public class Schedule {
     @ManyToMany(mappedBy = "scheduleList")
     private List<Event> eventList;
 
-
+    // Are we doing the calendar for one week, or that it's going with each day?
     public Schedule() {
     }
 
