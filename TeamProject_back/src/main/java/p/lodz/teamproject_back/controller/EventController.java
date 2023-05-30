@@ -58,7 +58,15 @@ public class EventController {
             // Set the fields of the existing event with the fields from the new event
             event.setName(newEvent.getName());
             event.setDescription(newEvent.getDescription());
-            // Set other fields as needed
+            event.setDate(newEvent.getDate());
+            event.setStartTime(newEvent.getStartTime());
+            event.setEndTime(newEvent.getEndTime());
+            event.setPlace(newEvent.getPlace());
+            event.setCategory(newEvent.getCategory());
+            event.setOrganizer(newEvent.getOrganizer());
+            event.setIsActive(newEvent.getIsActive());
+            event.setParticipantsList(newEvent.getParticipantsList());
+            event.setType(newEvent.getType());
 
             // Save the updated event
             eventRepository.save(event);
@@ -98,6 +106,15 @@ public class EventController {
             }
             if(updatedEvent.getOrganizer() != null) {
                 event.setOrganizer(updatedEvent.getOrganizer());
+            }
+            if(updatedEvent.getIsActive() != null) {
+                event.setIsActive(updatedEvent.getIsActive());
+            }
+            if(updatedEvent.getOrganizer() != null) {
+                event.setOrganizer(updatedEvent.getOrganizer());
+            }
+            if(updatedEvent.getParticipantsList() != null) {
+                event.setParticipantsList(updatedEvent.getParticipantsList());
             }
             eventRepository.save(event);
 

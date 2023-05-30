@@ -1,8 +1,10 @@
 package p.lodz.teamproject_back.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -13,19 +15,23 @@ public class Event {
     private EventEnum type;
     private String name;
     private String description;
-    private String date;
+    private Date date;
     private String startTime;
     private String endTime;
     private String place;
     private String category;
-    private String organizer;
+    private Boolean isRepeated;
+    private Boolean isActive;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    private List<Schedule> scheduleList;
-/*
-    @ManyToOne(cascade = CascadeType.ALL)
-    private List<Participant> participants;
- */
+    @JsonBackReference
+    private List<User> participantsList;
+
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JsonBackReference
+    @JoinColumn(name = "organizer_id")
+    private User organizer;
+
     public Event() {
     }
 
@@ -41,7 +47,7 @@ public class Event {
         return description;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
@@ -61,12 +67,21 @@ public class Event {
         return category;
     }
 
-    public String getOrganizer() {
-        return organizer;
-    }
 
     public EventEnum getType() {
         return type;
+    }
+
+    public User getOrganizer() {
+        return organizer;
+    }
+
+    public List<User> getParticipantsList() {
+        return participantsList;
+    }
+
+    public Boolean getIsActive(){
+        return isActive;
     }
 
     public void setId(Long id) {
@@ -81,7 +96,7 @@ public class Event {
         this.description = description;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
@@ -101,19 +116,21 @@ public class Event {
         this.category = category;
     }
 
-    public void setOrganizer(String organizer) {
-        this.organizer = organizer;
-    }
 
-    public List<Schedule> getScheduleList() {
-        return scheduleList;
-    }
-
-    public void setScheduleList(List<Schedule> scheduleList) {
-        this.scheduleList = scheduleList;
-    }
 
     public void setType(EventEnum type) {
         this.type = type;
+    }
+
+    public void setIsActive(Boolean isActive){
+        this.isActive = isActive;
+    }
+
+    public void setOrganizer(User organizer) {
+        this.organizer = organizer;
+    }
+
+    public void setParticipantsList(List<User> participantsList) {
+        this.participantsList = participantsList;
     }
 }
