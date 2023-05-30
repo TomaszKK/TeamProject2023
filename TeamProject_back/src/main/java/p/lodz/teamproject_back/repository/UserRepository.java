@@ -1,10 +1,11 @@
 package p.lodz.teamproject_back.repository;
 
+import org.springframework.data.jpa.repository.JpaRepository;
 import p.lodz.teamproject_back.model.User;
 
 import java.util.Optional;
 
-public interface UserRepository {
+public interface UserRepository extends JpaRepository<User, Long> {
     Optional<User> findByUsername(String username);
     Boolean existsByUsername(String username);
 
