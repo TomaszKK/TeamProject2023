@@ -1,5 +1,5 @@
 package p.lodz.teamproject_back.model;
 
 public enum RoleEnum {
-    STUDENT, ADMIN, COMPANY
+    ROLE_STUDENT, ROLE_ADMIN, ROLE_COMPANY
 }
