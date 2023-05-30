@@ -1,25 +1,31 @@
 package p.lodz.teamproject_back.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 public class Event {
     @Id
     @GeneratedValue
     private Long id;
+    private EventEnum type;
     private String name;
     private String description;
     private String date;
-    private String time;
+    private String startTime;
+    private String endTime;
     private String place;
     private String category;
     private String organizer;
-    private String organizerEmail;
-    private String organizerPhone;
-    private String organizerWebsite;
 
+    @ManyToMany(cascade = CascadeType.ALL)
+    private List<Schedule> scheduleList;
+/*
+    @ManyToOne(cascade = CascadeType.ALL)
+    private List<Participant> participants;
+ */
     public Event() {
     }
 
@@ -39,8 +45,12 @@ public class Event {
         return date;
     }
 
-    public String getTime() {
-        return time;
+    public String getStartTime() {
+        return startTime;
+    }
+
+    public String getEndTime() {
+        return endTime;
     }
 
     public String getPlace() {
@@ -55,16 +65,8 @@ public class Event {
         return organizer;
     }
 
-    public String getOrganizerEmail() {
-        return organizerEmail;
-    }
-
-    public String getOrganizerPhone() {
-        return organizerPhone;
-    }
-
-    public String getOrganizerWebsite() {
-        return organizerWebsite;
+    public EventEnum getType() {
+        return type;
     }
 
     public void setId(Long id) {
@@ -72,72 +74,46 @@ public class Event {
     }
 
     public void setName(String name) {
-        if (name == null || name.isEmpty()) {
-            throw new IllegalArgumentException("Name cannot be empty");
-        }
         this.name = name;
     }
 
     public void setDescription(String description) {
-        if (description == null || description.isEmpty()) {
-            throw new IllegalArgumentException("Description cannot be empty");
-        }
         this.description = description;
     }
 
     public void setDate(String date) {
-        if (date == null || date.isEmpty()) {
-            throw new IllegalArgumentException("Date cannot be empty");
-        }
         this.date = date;
     }
 
-    public void setTime(String time) {
-        if (time == null || time.isEmpty()) {
-            throw new IllegalArgumentException("Time cannot be empty");
-        }
-        this.time = time;
+   public void setStartTime(String startTime) {
+        this.startTime = startTime;
+    }
+
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
     }
 
     public void setPlace(String place) {
-        if (place == null || place.isEmpty()) {
-            throw new IllegalArgumentException("Place cannot be empty");
-        }
         this.place = place;
     }
 
     public void setCategory(String category) {
-        if (category == null || category.isEmpty()) {
-            throw new IllegalArgumentException("Category cannot be empty");
-        }
         this.category = category;
     }
 
     public void setOrganizer(String organizer) {
-        if (organizer == null || organizer.isEmpty()) {
-            throw new IllegalArgumentException("Organizer cannot be empty");
-        }
         this.organizer = organizer;
     }
 
-    public void setOrganizerEmail(String organizerEmail) {
-        if (organizerEmail == null || organizerEmail.isEmpty()) {
-            throw new IllegalArgumentException("Organizer email cannot be empty");
-        }
-        this.organizerEmail = organizerEmail;
+    public List<Schedule> getScheduleList() {
+        return scheduleList;
     }
 
-    public void setOrganizerPhone(String organizerPhone) {
-        if (organizerPhone == null || organizerPhone.isEmpty()) {
-            throw new IllegalArgumentException("Organizer phone cannot be empty");
-        }
-        this.organizerPhone = organizerPhone;
+    public void setScheduleList(List<Schedule> scheduleList) {
+        this.scheduleList = scheduleList;
     }
 
-    public void setOrganizerWebsite(String organizerWebsite) {
-        if (organizerWebsite == null || organizerWebsite.isEmpty()) {
-            throw new IllegalArgumentException("Organizer website cannot be empty");
-        }
-        this.organizerWebsite = organizerWebsite;
+    public void setType(EventEnum type) {
+        this.type = type;
     }
 }
