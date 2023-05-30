@@ -14,6 +14,7 @@ import { AppRoutingModule } from './app-routing.module';
     EventComponent,
     CalanderComponent,
     CompanyComponent
+
   ],
   imports: [
     BrowserModule,
