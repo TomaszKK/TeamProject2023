@@ -1,5 +1,27 @@
 <h1>{{title}}</h1>
-<button  [routerLink]="['/company']">CompanyView</button>
-<button  [routerLink]="['/calender']">CalanderView</button>
+<style>
+  .button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+</style>
+
+<div class="button-container">
+  <div>
+    <button [routerLink]="['/company']">CompanyView</button>
+  </div>
+  <div>
+    <button [routerLink]="['/calender']">CalendarView</button>
+  </div>
+</div>
+
+<div class="button-container">
+  <button [routerLink]="['/addActivity']">Add activity</button>
+</div>
 
 <router-outlet></router-outlet>
+

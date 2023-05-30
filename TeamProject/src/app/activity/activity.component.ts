@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-calander',
-  templateUrl: './calander.component.html',
-  styleUrls: ['./calander.component.css']
+  selector: 'app-activity',
+  templateUrl: './activity.component.html',
+  styleUrls: ['./activity.component.css']
 })
-export class CalanderComponent implements OnInit{
+export class ActivityComponent implements OnInit{
   ngOnInit() {
   }
 }
