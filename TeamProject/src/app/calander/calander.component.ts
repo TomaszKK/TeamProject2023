@@ -19,6 +19,8 @@ export class CalanderComponent implements OnInit{
   fridayEvent = EVENTLIST4;
   test = 5;
 
+  
+
   checkStyle(holder: number, loop: number, day: number){
     let placeHolder = 'testing'+ day + loop;
 

@@ -35,7 +35,7 @@ export const EVENTLIST1: EventInt[] = [
 
 export const EVENTLIST2: EventInt[] = [
   {name: "Free Time", id: 111, time: "May 30 8:00-9:00", place: "",type: 0},
-  {name: "Free Time", id: 111, time: "May 30 9:00-10:00", place: "",type: 0},
+  {name: "testing", id: 111, time: "May 30 9:00-10:00", place: "",type: 1},
   {name: "Free Time", id: 111, time: "May 30 10:00-11:00", place: "",type: 0},
   {name: "Free Time", id: 111, time: "May 30 11:00-12:00", place: "",type: 0},
   {name: "Free Time", id: 111, time: "May 30 12:00-13:00", place: "",type: 0},
