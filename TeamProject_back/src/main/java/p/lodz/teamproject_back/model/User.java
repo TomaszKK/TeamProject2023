@@ -35,6 +35,9 @@ public class User {
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles = new HashSet<>();
 
+    @OneToOne(cascade = CascadeType.ALL)
+    private Schedule schedule;
+
     public User(@NotBlank @Size(min = 3, max = 100) String username, @NotBlank @Size(min = 3, max = 50) String name,
                 @NotBlank @Size(min = 3, max = 50) String surname, @NotBlank @Size(min = 3, max = 100) String password) {
         this.username = username;

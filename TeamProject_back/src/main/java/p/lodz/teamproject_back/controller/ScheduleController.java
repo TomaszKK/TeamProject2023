@@ -53,10 +53,6 @@ public class ScheduleController {
         Optional<Schedule> optionalSchedule = scheduleRepository.findById(id);
         if (optionalSchedule.isPresent()) {
             Schedule schedule = optionalSchedule.get();
-            // Update the relevant fields of the schedule
-            schedule.setDate(updatedSchedule.getDate());
-            // Set other fields as needed
-
             scheduleRepository.save(schedule);
             return new ResponseEntity<>(schedule, HttpStatus.OK);
         } else {
@@ -75,9 +71,6 @@ public class ScheduleController {
             // Create a new schedule with the same ID
             Schedule updatedSchedule = new Schedule();
             updatedSchedule.setId(id);
-            // Set the fields of the updated schedule
-            updatedSchedule.setDate(newSchedule.getDate());
-            // Set other fields as needed
 
             // Save the updated schedule
             scheduleRepository.save(updatedSchedule);
