@@ -1,2 +1,68 @@
 <p>calender works!</p>
+
+
+
+<table style="width:100%">
+  <tr>
+    <th style ="width:4%"></th>
+    <th style ="width:8%">8:00-9:00</th>
+    <th style ="width:8%">9:00-10:00</th>
+    <th style ="width:8%">10:00-11:00</th>
+    <th style ="width:8%">11:00-12:00</th>
+    <th style ="width:8%">12:00-13:00</th>
+    <th style ="width:8%">13:00-14:00</th>
+    <th style ="width:8%">14:00-15:00</th>
+    <th style ="width:8%">15:00-16:00</th>
+    <th style ="width:8%">16:00-17:00</th>
+    <th style ="width:8%">17:00-18:00</th>
+    <th style ="width:8%">18:00-19:00</th>
+    <th style ="width:8%">19:00-20:00</th>
+
+
+  </tr>
+  <tr>
+    <th style ="height:20px">Monday</th>
+    <td id="{{'testing0' + i}}" *ngFor="let event of mondayEvent ; let i = index" >
+      <h3 >{{event.name}}</h3> <br>
+      Place: <br> {{event.place}}
+      {{checkStyle(event.type, i, 0)}}
+    </td>
+
+  </tr>
+  <tr>
+    <th>Tuesday</th>
+    <td id="{{'testing1' + i}}" *ngFor="let event of tuesdayEvent ; let i = index">
+      <h3>{{event.name}}</h3> <br>
+      Place: {{event.place}}
+      {{checkStyle(event.type, i, 1)}}
+    </td>
+  </tr>
+  <tr>
+    <th>Wednesday</th>
+    <td id="{{'testing2' + i}}" *ngFor="let event of wednesdayEvent ; let i = index">
+      <h3>{{event.name}}</h3> <br>
+      Place: {{event.place}}
+    {{checkStyle(event.type, i, 2)}}
+    </td>
+  </tr>
+  <tr>
+    <th>Thursday</th>
+    <td id="{{'testing3' + i}}" *ngFor="let event of thursdayEvent; let i = index">
+      <h3>{{event.name}}</h3> <br>
+      Place: {{event.place}}
+      {{checkStyle(event.type, i, 3)}}
+
+    </td>
+  </tr>
+  <tr>
+    <th>Friday</th>
+    <td id="{{'testing4' + i}}" *ngFor="let event of fridayEvent let i = index">
+      <h3>{{event.name}}</h3> <br>
+      Place: {{event.place}}
+      {{checkStyle(event.type, i, 4)}}
+
+    </td>
+  </tr>
+</table>
+<div></div>
 <app-event></app-event>

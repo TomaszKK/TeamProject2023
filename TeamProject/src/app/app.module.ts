@@ -7,17 +7,21 @@ import { CalanderComponent } from './calander/calander.component';
 import { CompanyComponent } from './company/company.component';
 import {RouterOutlet} from "@angular/router";
 import { AppRoutingModule } from './app-routing.module';
+import {ActivityComponent} from "./activity/activity.component";
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     EventComponent,
     CalanderComponent,
-    CompanyComponent
+    CompanyComponent,
+    ActivityComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

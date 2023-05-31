@@ -1,6 +1,9 @@
 package p.lodz.teamproject_back.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.text.DateFormat;
@@ -12,15 +15,12 @@ public class Schedule {
     @Id
     @GeneratedValue
     private Long id;
-    private DateFormat Date;
-/*
-    @OneToOne(mappedBy = "User", cascade = CascadeType.ALL)
-    private String User;
-*/
-    @ManyToMany(mappedBy = "scheduleList")
+
+    @ManyToMany(cascade = CascadeType.PERSIST)
+    @JsonManagedReference
+    @JsonIgnore
     private List<Event> eventList;
 
-    // Are we doing the calendar for one week, or that it's going with each day?
     public Schedule() {
     }
 
@@ -28,9 +28,6 @@ public class Schedule {
         return id;
     }
 
-    public DateFormat getDate() {
-        return Date;
-    }
 
     public List<Event> getEventList() {
         return eventList;
@@ -38,10 +35,6 @@ public class Schedule {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public void setDate(DateFormat Date) {
-        this.Date = Date;
     }
 
     public void setEventList(List<Event> eventList) {
