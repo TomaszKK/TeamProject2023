@@ -52,7 +52,7 @@ th {
   right: 0;
   bottom: 0;
 
-  background-color: #007bff;
+  background-color: #8B0000;
   color: #fff;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -72,7 +72,7 @@ th {
 }
 
 button {
-  background-color: #007bff;
+  background-color: #8B0000;
   color: #fff;
   border: none;
   padding: 8px 12px;
@@ -81,7 +81,7 @@ button {
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #8B0000;
 }
 
 
