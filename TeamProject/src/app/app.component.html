@@ -1,4 +1,4 @@
-<h1>{{title}}</h1>
+<!--<h1>{{title}}</h1>
 <style>
   .button-container {
     display: flex;
@@ -19,9 +19,38 @@
   </div>
 </div>
 
+
+<router-outlet></router-outlet> -->
+<h1>{{title}}</h1>
+<style>
+  .button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+
+  .button-container button {
+    padding: 10px 20px;
+    background-color: #8B0000;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+</style>
+
 <div class="button-container">
-  <button [routerLink]="['/addActivity']">Add activity</button>
+  <div>
+    <button [routerLink]="['/company']">CompanyView</button>
+  </div>
+  <div>
+    <button [routerLink]="['/calender']">CalendarView</button>
+  </div>
 </div>
 
 <router-outlet></router-outlet>
+
 

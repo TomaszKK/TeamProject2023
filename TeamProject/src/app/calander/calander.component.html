@@ -55,6 +55,10 @@
   <button type="submit">Add</button>
 </form>
 
+<div class="button-container">
+  <button [routerLink]="['/addActivity']">Add event</button>
+</div>
+
 <h3>Events</h3>
 <ul>
   <li *ngFor="let event of events">
