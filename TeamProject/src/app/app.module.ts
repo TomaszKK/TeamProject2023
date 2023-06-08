@@ -10,6 +10,14 @@ import { AppRoutingModule } from './app-routing.module';
 import {ActivityComponent} from "./activity/activity.component";
 import { FormsModule } from '@angular/forms';
 
+
+// import { CommonModule } from '@angular/common';
+// import { FlatpickrModule } from 'angularx-flatpickr';
+// import { CalendarModule, DateAdapter } from 'angular-calendar';
+// import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+// import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+// import { MakeCalendarService } from './make-calendar.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,11 +27,21 @@ import { FormsModule } from '@angular/forms';
     ActivityComponent
   ],
   imports: [
+    // CommonModule,
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    // NgbModalModule,
+    // FlatpickrModule.forRoot(),
+    // CalendarModule.forRoot({
+    //   provide: DateAdapter,
+    //   useFactory: adapterFactory,
+    // }),
   ],
-  providers: [],
+
+
+
+  providers: [/*MakeCalendarService*/],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

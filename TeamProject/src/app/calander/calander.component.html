@@ -1,68 +1,133 @@
-<p>calender works!</p>
+
+
+<!--&lt;!&ndash;<p>calender works!</p>&ndash;&gt;-->
+
+<div class="calendar">
+  <div class="header">
+    <button (click)="previousWeek()">Previous Week</button>
+    <h2>Weekly Calendar</h2>
+    <button (click)="nextWeek()">Next Week</button>
+  </div>
+  <table>
+    <thead>
+    <tr>
+      <th></th>
+      <th *ngFor="let date of weekDates" class="date-header">
+        {{ date | date: 'EEE' }} {{ date | date: 'd' }}
+      </th>
+    </tr>
+    </thead>
+    <tbody>
+    <ng-container *ngFor="let hour of hours; let i = index">
+      <tr>
+        <td >{{ hour }}</td>
+        <td *ngFor="let date of weekDates" (click)="showAddEventModal(date, hour)">
+          <div class="event-container">
+            <div
+              class="event"
+              *ngFor="let event of getEventsForDateAndHour(date, i)"
+
+              [style.height]="calculateEventHeight(event.startHour, event.endHour)"
+              >
+              {{ event.title }}
+            </div>
+          </div>
+        </td>
+      </tr>
+    </ng-container>
+    </tbody>
+  </table>
+</div>
 
 
 
-<table style="width:100%">
-  <tr>
-    <th style ="width:4%"></th>
-    <th style ="width:8%">8:00-9:00</th>
-    <th style ="width:8%">9:00-10:00</th>
-    <th style ="width:8%">10:00-11:00</th>
-    <th style ="width:8%">11:00-12:00</th>
-    <th style ="width:8%">12:00-13:00</th>
-    <th style ="width:8%">13:00-14:00</th>
-    <th style ="width:8%">14:00-15:00</th>
-    <th style ="width:8%">15:00-16:00</th>
-    <th style ="width:8%">16:00-17:00</th>
-    <th style ="width:8%">17:00-18:00</th>
-    <th style ="width:8%">18:00-19:00</th>
-    <th style ="width:8%">19:00-20:00</th>
+<!-- Add Event Modal -->
+<h3>Add Event</h3>
+<form (ngSubmit)="addEvent(form.value.title, form.value.date, form.value.hour, form.value.endHour)" #form="ngForm">
+  <input type="text" name="title" ngModel placeholder="Event Title" required>
+  <input type="date" name="date" ngModel required>
+  <select name="hour" ngModel required>
+    <option *ngFor="let hour of hours" [value]="hour">{{ hour }}</option>
+  </select>
+  <select name="endHour" ngModel required>
+    <option *ngFor="let hour of hours" [value]="hour">{{ hour }}</option>
+  </select>
+  <button type="submit">Add</button>
+</form>
 
+<h3>Events</h3>
+<ul>
+  <li *ngFor="let event of events">
+    {{ event.title }} - {{ event.date | date: 'EEEE, MMM d' }} - {{ event.startHour }} to {{ event.endHour }}
+  </li>
+</ul>
 
-  </tr>
-  <tr>
-    <th style ="height:20px">Monday</th>
-    <td id="{{'testing0' + i}}" *ngFor="let event of mondayEvent ; let i = index" >
-      <h3 >{{event.name}}</h3> <br>
-      Place: <br> {{event.place}}
-      {{checkStyle(event.type, i, 0)}}
-    </td>
+<!--<p>calendar works!</p>-->
+<!--<h1>Weekly Calendar</h1>-->
 
-  </tr>
-  <tr>
-    <th>Tuesday</th>
-    <td id="{{'testing1' + i}}" *ngFor="let event of tuesdayEvent ; let i = index">
-      <h3>{{event.name}}</h3> <br>
-      Place: {{event.place}}
-      {{checkStyle(event.type, i, 1)}}
-    </td>
-  </tr>
-  <tr>
-    <th>Wednesday</th>
-    <td id="{{'testing2' + i}}" *ngFor="let event of wednesdayEvent ; let i = index">
-      <h3>{{event.name}}</h3> <br>
-      Place: {{event.place}}
-    {{checkStyle(event.type, i, 2)}}
-    </td>
-  </tr>
-  <tr>
-    <th>Thursday</th>
-    <td id="{{'testing3' + i}}" *ngFor="let event of thursdayEvent; let i = index">
-      <h3>{{event.name}}</h3> <br>
-      Place: {{event.place}}
-      {{checkStyle(event.type, i, 3)}}
+<!--<div class="calendar-controls">-->
+<!--  <button (click)="previousWeek()">Previous Week</button>-->
+<!--  <button (click)="nextWeek()">Next Week</button>-->
+<!--</div>-->
 
-    </td>
-  </tr>
-  <tr>
-    <th>Friday</th>
-    <td id="{{'testing4' + i}}" *ngFor="let event of fridayEvent let i = index">
-      <h3>{{event.name}}</h3> <br>
-      Place: {{event.place}}
-      {{checkStyle(event.type, i, 4)}}
+<!--<table class="calendar">-->
+<!--  <thead>-->
+<!--  <tr>-->
+<!--    <th>Date</th>-->
+<!--    <th *ngFor="let hour of hours">{{ hour }}:00</th>-->
+<!--  </tr>-->
+<!--  </thead>-->
+<!--  <tbody>-->
+<!--  <ng-container *ngFor="let date of weekDates">-->
+<!--    <tr>-->
+<!--      <td>{{ date | date: 'EEE, MMM d' }}</td>-->
+<!--      <td *ngFor="let hour of hours" (click)="showAddEventModal(date, hour)">-->
+<!--        <div class="hour-slot">-->
+<!--          <div *ngFor="let event of getEventsForDateAndHour(date, hour)" class="event" [style.backgroundColor]="event.color" [style.color]="event.textColor">-->
+<!--            {{ event.title }}-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </td>-->
+<!--    </tr>-->
+<!--  </ng-container>-->
+<!--  </tbody>-->
+<!--</table>-->
 
-    </td>
-  </tr>
-</table>
-<div></div>
-<app-event></app-event>
+<!--&lt;!&ndash; Add Event Modal &ndash;&gt;-->
+<!--<div class="modal" *ngIf="showModal">-->
+<!--  <div class="modal-content">-->
+<!--    <h2>Add Event</h2>-->
+<!--    <form (ngSubmit)="addEvent()">-->
+<!--      <div class="form-group">-->
+<!--        <label>Title:</label>-->
+<!--        <input type="text" name="title" [(ngModel)]="newEvent.title" required>-->
+<!--      </div>-->
+<!--      <div class="form-group">-->
+<!--        <label>Date:</label>-->
+<!--        <input type="date" name="date" [(ngModel)]="newEvent.date" required>-->
+<!--      </div>-->
+<!--      <div class="form-group">-->
+<!--        <label>Start Hour:</label>-->
+<!--        <select name="startHour" [(ngModel)]="newEvent.startHour" required>-->
+<!--          <option *ngFor="let hour of hours" [value]="hour">{{ hour }}:00</option>-->
+<!--        </select>-->
+<!--      </div>-->
+<!--      <div class="form-group">-->
+<!--        <label>End Hour:</label>-->
+<!--        <select name="endHour" [(ngModel)]="newEvent.endHour" required>-->
+<!--          <option *ngFor="let hour of hours" [value]="hour">{{ hour }}:00</option>-->
+<!--        </select>-->
+<!--      </div>-->
+<!--      <div class="form-group">-->
+<!--        <label>Color:</label>-->
+<!--        <input type="color" name="color" [(ngModel)]="newEvent.color" required>-->
+<!--      </div>-->
+<!--      <div class="form-group">-->
+<!--        <label>Text Color:</label>-->
+<!--        <input type="color" name="textColor" [(ngModel)]="newEvent.textColor" required>-->
+<!--      </div>-->
+<!--      <button type="submit">Add</button>-->
+<!--    </form>-->
+<!--  </div>-->
+<!--</div>-->
+

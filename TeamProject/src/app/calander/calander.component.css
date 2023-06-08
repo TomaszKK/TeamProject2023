@@ -1,34 +1,245 @@
-table, th, td {
-  border: 1px solid black;
+.calendar {
+  width: 100%;
+  margin-bottom: 20px;
+  border-spacing: 0px
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+table {
+  width: 100%;
   border-collapse: collapse;
-  background-color: aliceblue;
-
 }
 
-
-
-th, td {
-  padding: 10px;
-}
-
-
-
-
-
-tbody, thead, td {
+th,
+td {
+  padding: 0;
+  height: 20px;
+  border: 1px solid #ccc;
   text-align: center;
 }
 
+th {
+  width: 100px;
+  background-color: #f2f2f2;
+}
 
-.freeTimeStyle {
-  background-color: #ccffb3;
-  color: black;
-  border: 1px solid black;
+.date-header {
+  position: relative;
+}
+
+.day,
+.weekday {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.event-container {
+  position: relative;
+  height: 100%;
 
 }
-.classStyle {
-  background-color: #ffb3ff;
-  color: black;
-  border: 1px solid black;
+
+.event {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  background-color: #007bff;
+  color: #fff;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
 }
+
+.event:hover {
+  overflow: visible;
+}
+
+.event + .event {
+  margin-top: 2px;
+}
+
+button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+
+/*.calendar {*/
+/*  width: 100%;*/
+/*  margin-bottom: 20px;*/
+/*}*/
+
+/*.header {*/
+/*  display: flex;*/
+/*  justify-content: space-between;*/
+/*  align-items: center;*/
+/*  margin-bottom: 10px;*/
+/*}*/
+
+/*table {*/
+/*  width: 100%;*/
+/*  border-collapse: collapse;*/
+/*}*/
+
+/*th,*/
+/*td {*/
+/*  border: 1px solid #ccc;*/
+/*  padding: 8px;*/
+/*  text-align: center;*/
+/*}*/
+
+/*th {*/
+/*  background-color: #f2f2f2;*/
+/*}*/
+
+/*.date-header {*/
+/*  position: relative;*/
+/*}*/
+
+/*.date-header .day {*/
+/*  position: absolute;*/
+/*  top: 18px;*/
+/*  left: 0;*/
+/*  right: 0;*/
+/*  font-size: 12px;*/
+/*  font-weight: bold;*/
+/*  color: #777;*/
+/*}*/
+
+/*.event-container {*/
+/*  position: relative;*/
+/*  height: 100%;*/
+/*  display: grid;*/
+/*}*/
+
+/*.event {*/
+/*  background-color: #007bff;*/
+/*  color: #fff;*/
+/*  padding: 5px;*/
+/*  overflow: hidden;*/
+/*  text-overflow: ellipsis;*/
+/*  white-space: nowrap;*/
+/*  display: flex;*/
+/*  align-items: center;*/
+/*  justify-content: center;*/
+/*}*/
+
+/*.event:hover {*/
+/*  cursor: pointer;*/
+/*  background-color: #0056b3;*/
+/*}*/
+
+/*button {*/
+/*  background-color: #007bff;*/
+/*  color: #fff;*/
+/*  border: none;*/
+/*  padding: 8px 12px;*/
+/*  border-radius: 4px;*/
+/*  cursor: pointer;*/
+/*}*/
+
+/*button:hover {*/
+/*  background-color: #0056b3;*/
+/*}*/
+
+
+
+
+
+
+
+
+
+
+/*.calendar {*/
+/*  width: 100%;*/
+/*  margin-bottom: 20px;*/
+/*}*/
+
+/*.header {*/
+/*  display: flex;*/
+/*  justify-content: space-between;*/
+/*  align-items: center;*/
+/*  margin-bottom: 10px;*/
+/*}*/
+
+/*table {*/
+/*  width: 100%;*/
+/*  border-collapse: collapse;*/
+/*}*/
+
+/*th,*/
+/*td {*/
+/*  border: 1px solid #ccc;*/
+/*  padding: 8px;*/
+/*  text-align: center;*/
+/*}*/
+
+/*th {*/
+/*  background-color: #f2f2f2;*/
+/*}*/
+
+/*.event-container {*/
+/*  position: relative;*/
+/*  height: 100%;*/
+/*}*/
+
+/*.event {*/
+/*  position: absolute;*/
+/*  top: 0;*/
+/*  left: 0;*/
+/*  right: 0;*/
+/*  bottom: 0;*/
+/*  background-color: #007bff;*/
+/*  color: #fff;*/
+/*  padding: 5px;*/
+/*  overflow: hidden;*/
+/*  text-overflow: ellipsis;*/
+/*  white-space: nowrap;*/
+/*  display: flex;*/
+/*  align-items: center;*/
+/*  justify-content: center;*/
+/*}*/
+
+/*.event + .event {*/
+/*  margin-top: 2px;*/
+/*}*/
+
+/*.event:hover {*/
+/*  cursor: pointer;*/
+/*  background-color: #0056b3;*/
+/*}*/
+
+/*button {*/
+/*  background-color: #007bff;*/
+/*  color: #fff;*/
+/*  border: none;*/
+/*  padding: 8px 12px;*/
+/*  border-radius: 4px;*/
+/*  cursor: pointer;*/
+/*}*/
+
+/*button:hover {*/
+/*  background-color: #0056b3;*/
+/*}*/
