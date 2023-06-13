@@ -13,7 +13,7 @@
     <tr>
       <th></th>
       <th *ngFor="let date of weekDates" class="date-header">
-        {{ date | date: 'EEE' }} {{ date | date: 'd' }}
+       {{date | date: 'MMM'}} {{ date | date: 'EEE' }} {{ date | date: 'd' }}
       </th>
     </tr>
     </thead>
@@ -27,9 +27,9 @@
               class="event"
               *ngFor="let event of getEventsForDateAndHour(date, i)"
 
-              [style.height]="calculateEventHeight(event.startHour, event.endHour)"
+              [style.height]="calculateEventHeight(event.startTime, event.endTime)"
               >
-              {{ event.title }}
+              {{ event.name }}
             </div>
           </div>
         </td>
@@ -39,7 +39,7 @@
   </table>
 </div>
 
-
+{{callmelol()}}
 
 <!-- Add Event Modal -->
 <h3>Add Event</h3>
@@ -62,7 +62,7 @@
 <h3>Events</h3>
 <ul>
   <li *ngFor="let event of events">
-    {{ event.title }} - {{ event.date | date: 'EEEE, MMM d' }} - {{ event.startHour }} to {{ event.endHour }}
+    {{ event.name }} - {{ event.date | date: 'EEEE, MMM d' }} - {{ event.startTime }} to {{ event.endTime }}
   </li>
 </ul>
 
