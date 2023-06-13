@@ -1,30 +1,39 @@
-import { Component } from '@angular/core';
-
-interface Event {
-  title: string;
-  date: string;
-  startHour: string;
-  endHour: string;
-}
+import { Component, OnInit } from '@angular/core';
+import {EventService} from "../event.service";
+import {Event} from "../event.model";
+// interface Event {
+//   title: string;
+//   date: string;
+//   startHour: string;
+//   endHour: string;
+// }
 @Component({
   selector: 'app-calander',
   templateUrl: './calander.component.html',
   styleUrls: ['./calander.component.css']
 })
-export class CalanderComponent {
+export class CalanderComponent implements OnInit{
 
   weekDates: Date[];
   events: Event[];
   currentWeekStartDate: Date;
   hours: string[];
 
-  constructor() {
+  constructor(private eventService: EventService) {
     this.currentWeekStartDate = new Date();
     this.weekDates = this.getWeekDates(this.currentWeekStartDate);
     this.events = [];
+    this.getEvents();
     this.hours = this.generateHours();
   }
+  ngOnInit(){
 
+  }
+  callmelol(){
+
+    console.log(this.events);
+
+  }
 
   calculateEventHeight(startHour: string, endHour: string): string {
     const hourHeight = 20; // Height in pixels for each hour
@@ -63,22 +72,23 @@ export class CalanderComponent {
   }
 
   addEvent(title: string, date: string, hour: string, endHour: string) {
-    const event: Event = {
-      title: title,
-      date: date,
-      startHour: hour,
-      endHour: endHour
-    };
+    // const event: Event = {
+    //   title: title,
+    //   date: date,
+    //   startHour: hour,
+    //   endHour: endHour
+    // };
 
-    this.events.push(event);
+    // this.events.push(event);
   }
 
   getEventsForDateAndHour(date: Date, hourIndex: number): Event[] {
+    //console.log("lookatme" + date);
     return this.events.filter(
       event =>
-        this.isSameDate(this.parseDate(event.date), date) &&
-        event.startHour === this.hours[hourIndex] &&
-        this.isHourWithinRange(event.startHour, event.endHour, this.hours[hourIndex])
+        this.isSameDate(this.parseDate(event.date.toString()), date) &&
+        event.startTime === this.hours[hourIndex] &&
+        this.isHourWithinRange(event.startTime, event.endTime, this.hours[hourIndex])
     );
   }
 
@@ -109,26 +119,26 @@ export class CalanderComponent {
     this.weekDates = this.getWeekDates(this.currentWeekStartDate);
   }
   showAddEventModal(date: Date, hour: string) {
+    console.log("ever enter?");
     const formattedDate = this.formatDate(date);
     const formattedHour = hour;
 
-    // Implement your logic to display the modal for adding events
-    // You can access the selected date and hour parameters here
+
     console.log('Selected Date:', formattedDate);
     console.log('Selected Hour:', formattedHour);
 
-    // Example: Simulate adding an event
     const title = prompt('Enter event title:');
-    if (title) {
-      const event: Event = {
-        title: title,
-        date: formattedDate,
-        startHour: formattedHour,
-        endHour: formattedHour // Set the same hour as the end time for now
-      };
-
-      this.events.push(event);
-    }
+    // if (title) {
+    //   console.log("LOOK");
+    //   const event: Event = {
+    //     title: title,
+    //     date: formattedDate,
+    //     startHour: formattedHour,
+    //     endHour: formattedHour
+    //   };
+    //
+    //   this.events.push(event);
+    // }
   }
 
   private formatDate(date: Date): string {
@@ -137,7 +147,10 @@ export class CalanderComponent {
     const day = ('0' + date.getDate()).slice(-2);
     return `${year}-${month}-${day}`;
   }
-
+  getEvents(): void {
+    this.eventService.getEvents()
+      .subscribe(events => this.events = events);
+  }
 
 
 /*
