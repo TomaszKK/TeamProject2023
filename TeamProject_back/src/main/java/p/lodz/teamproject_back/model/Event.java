@@ -121,7 +121,17 @@ public class Event {
         this.category = category;
     }
 
+    public void setRepeated(Boolean repeated) {
+        isRepeated = repeated;
+    }
 
+    public Boolean getRepeated() {
+        return isRepeated;
+    }
+
+    public Boolean getActive() {
+        return isActive;
+    }
 
     public void setType(EventEnum type) {
         this.type = type;

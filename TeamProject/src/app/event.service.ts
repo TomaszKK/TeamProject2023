@@ -14,7 +14,7 @@ export class EventService {
   private eventUrl = 'http://localhost:8080/event';
 
   constructor(private http: HttpClient) { }
-  
+
   getEvents():Observable<Event[]>{
     return this.http.get<Event[]>(this.eventUrl);
   }
@@ -29,8 +29,14 @@ export class EventService {
   updateEvent(event: Event, id:number): Observable<Event> {
     window.location.reload()
     return this.http.put<Event>(`${this.eventUrl}/${id}`, event, httpOptions).pipe(
-      tap(_ => this.log(`updated event id=${event.id}`)), 
+      tap(_ => this.log(`updated event id=${event.id}`)),
       catchError(this.handleError<any>('updateEvent'))
+    );
+  }
+  addEvent(event: Event): Observable<Event> {
+    return this.http.post<Event>(this.eventUrl, event, httpOptions).pipe(
+      tap((eventAdded: Event) => this.log(`added event id=${eventAdded.id}`)),
+      catchError(this.handleError<Event>('addEvent'))
     );
   }
 
@@ -51,4 +57,7 @@ export class EventService {
   private log(message: string) {
     console.log('EventService: ' + message);
   }
+
+  public totalItems: BehaviorSubject<number> = new BehaviorSubject<number>(0);
+
 }
