@@ -1,6 +1,7 @@
 package p.lodz.teamproject_back.controller;
 
 import jakarta.validation.Valid;
+import org.hibernate.tool.schema.spi.SchemaDropper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +18,7 @@ import p.lodz.teamproject_back.message.response.JwtResponse;
 import p.lodz.teamproject_back.message.response.ResponseMessage;
 import p.lodz.teamproject_back.model.Role;
 import p.lodz.teamproject_back.model.RoleEnum;
+import p.lodz.teamproject_back.model.Schedule;
 import p.lodz.teamproject_back.model.User;
 import p.lodz.teamproject_back.repository.RoleRepository;
 import p.lodz.teamproject_back.repository.UserRepository;
@@ -64,8 +66,10 @@ public class AuthController {
             return new ResponseEntity<>(new ResponseMessage("Fail -> Username is already taken."), HttpStatus.BAD_REQUEST);
         }
 
+        Schedule schedule = new Schedule();
+
         // Create user account
-        User user = new User(signUpRequest.getUsername(), signUpRequest.getName(), signUpRequest.getSurname(), passwordEncoder.encode(signUpRequest.getPassword()));
+        User user = new User(signUpRequest.getUsername(), signUpRequest.getName(), signUpRequest.getSurname(), passwordEncoder.encode(signUpRequest.getPassword()), schedule);
 
         Set<String> strRoles = signUpRequest.getRole();
         Set<Role> roles = new HashSet<>();

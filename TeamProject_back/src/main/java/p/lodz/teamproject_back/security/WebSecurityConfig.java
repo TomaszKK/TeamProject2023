@@ -53,8 +53,9 @@ public class WebSecurityConfig {
                         .requestMatchers("/auth/**").permitAll()
                         .requestMatchers("/error").permitAll() // this enables the body in the exception responses
                         .requestMatchers("/student").hasRole("STUDENT")
+                        .requestMatchers("/user").permitAll()
                         .requestMatchers("/event").permitAll()
-                        .requestMatchers("/schedule").permitAll()
+                        .requestMatchers("/schedule/**").permitAll()
                         .requestMatchers("/admin").hasRole("ADMIN")
                         .requestMatchers("/company").hasRole("COMPANY")
                         .anyRequest().authenticated()

@@ -10,7 +10,7 @@ import java.util.List;
 @Entity
 public class Event {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private EventEnum type;
     private String name;
@@ -31,6 +31,11 @@ public class Event {
     @JsonBackReference
     @JoinColumn(name = "organizer_id")
     private User organizer;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "schedule_id")
+    @JsonManagedReference
+    private Schedule schedule;
 
     public Event() {
     }
@@ -132,5 +137,13 @@ public class Event {
 
     public void setParticipantsList(List<User> participantsList) {
         this.participantsList = participantsList;
+    }
+
+    public void setSchedule(Schedule schedule) {
+        this.schedule = schedule;
+    }
+
+    public Schedule getSchedule() {
+        return schedule;
     }
 }

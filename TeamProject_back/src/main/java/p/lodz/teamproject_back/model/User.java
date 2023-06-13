@@ -1,5 +1,6 @@
 package p.lodz.teamproject_back.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -35,15 +36,17 @@ public class User {
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles = new HashSet<>();
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference
     private Schedule schedule;
 
     public User(@NotBlank @Size(min = 3, max = 100) String username, @NotBlank @Size(min = 3, max = 50) String name,
-                @NotBlank @Size(min = 3, max = 50) String surname, @NotBlank @Size(min = 3, max = 100) String password) {
+                @NotBlank @Size(min = 3, max = 50) String surname, @NotBlank @Size(min = 3, max = 100) String password, Schedule schedule) {
         this.username = username;
         this.name = name;
         this.surname = surname;
         this.password = password;
+        this.schedule = schedule;
     }
 
     public User() {
@@ -96,5 +99,14 @@ public class User {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+
+
+    public Schedule getSchedule() {
+        return schedule;
+    }
+
+    public void setSchedule(Schedule schedule) {
+        this.schedule = schedule;
     }
 }

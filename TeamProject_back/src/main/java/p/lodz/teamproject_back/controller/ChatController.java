@@ -8,7 +8,7 @@ import p.lodz.teamproject_back.repository.ChatRepository;
 
 import java.util.List;
 import java.util.Optional;
-
+/*
 public class ChatController {
   private ChatRepository chatRepository;
 
@@ -78,3 +78,4 @@ public class ChatController {
         }
     }
 }
+*/
