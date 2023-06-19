@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {EventService} from "../event.service";
 import {Event} from "../event.model";
-// interface Event {
+// interface Event1 {
 //   title: string;
 //   date: string;
 //   startHour: string;
@@ -29,9 +29,9 @@ export class CalanderComponent implements OnInit{
   ngOnInit(){
 
   }
-  callmelol(){
+  debug(){
 
-    console.log(this.events);
+    console.log(this.events[0].description);
 
   }
 

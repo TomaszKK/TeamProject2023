@@ -14,11 +14,11 @@ export class EventService {
   private eventUrl = 'http://localhost:8080/event';
 
   constructor(private http: HttpClient) { }
-  
+
   getEvents():Observable<Event[]>{
-    return this.http.get<Event[]>(this.eventUrl);
-  }
-  getEvent(id: number):Observable<Event>{
+  return this.http.get<Event[]>(this.eventUrl);
+}
+getEvent(id: number):Observable<Event>{
     const url = `${this.eventUrl}/${id}`;
     return this.http.get<Event>(url).pipe(
       tap(_ => this.log(`fetched event id=${id}`)),
@@ -26,10 +26,18 @@ export class EventService {
     );
   }
 
+  addEvent(event: Event): Observable<Event> {
+    window.location.reload()
+    return this.http.post<Event>(this.eventUrl, event, httpOptions).pipe(
+      tap((newEvent: Event) => this.log(`added event w/ id=${newEvent.id}`)),
+      catchError(this.handleError<Event>('addEvent'))
+    );
+  }
+
   updateEvent(event: Event, id:number): Observable<Event> {
     window.location.reload()
     return this.http.put<Event>(`${this.eventUrl}/${id}`, event, httpOptions).pipe(
-      tap(_ => this.log(`updated event id=${event.id}`)), 
+      tap(_ => this.log(`updated event id=${event.id}`)),
       catchError(this.handleError<any>('updateEvent'))
     );
   }

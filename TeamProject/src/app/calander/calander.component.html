@@ -39,7 +39,7 @@
   </table>
 </div>
 
-{{callmelol()}}
+
 
 <!-- Add Event Modal -->
 <h3>Add Event</h3>
@@ -58,7 +58,7 @@
 <div class="button-container">
   <button [routerLink]="['/addActivity']">Add event</button>
 </div>
-
+<button (click)="debug()"> debug</button>
 <h3>Events</h3>
 <ul>
   <li *ngFor="let event of events">
