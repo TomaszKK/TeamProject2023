@@ -41,6 +41,12 @@ getEvent(id: number):Observable<Event>{
       catchError(this.handleError<any>('updateEvent'))
     );
   }
+  addEvent(event: Event): Observable<Event> {
+    return this.http.post<Event>(this.eventUrl, event, httpOptions).pipe(
+      tap((eventAdded: Event) => this.log(`added event id=${eventAdded.id}`)),
+      catchError(this.handleError<Event>('addEvent'))
+    );
+  }
 
 
   private handleError<T>(operation = 'operation', result?: T) {
@@ -59,4 +65,7 @@ getEvent(id: number):Observable<Event>{
   private log(message: string) {
     console.log('EventService: ' + message);
   }
+
+  public totalItems: BehaviorSubject<number> = new BehaviorSubject<number>(0);
+
 }

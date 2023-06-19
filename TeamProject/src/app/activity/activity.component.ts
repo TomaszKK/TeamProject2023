@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import {EventService} from "../event.service";
+import {Event} from "../event.model";
 
-interface Event {
-  title: string;
-  date: string;
-  startHour: string;
-  endHour: string;
-}
+// interface Event {
+//   title: string;
+//   date: string;
+//   startHour: string;
+//   endHour: string;
+// }
 @Component({
   selector: 'app-activity',
   templateUrl: './activity.component.html',
@@ -18,7 +20,7 @@ export class ActivityComponent {
   currentWeekStartDate: Date;
   hours: string[];
 
-  constructor() {
+  constructor(private eventService: EventService) {
     this.currentWeekStartDate = new Date();
     this.weekDates = this.getWeekDates(this.currentWeekStartDate);
     this.events = [];
@@ -47,14 +49,26 @@ export class ActivityComponent {
     return hours;
   }
 
-  addEvent(title: string, date: string, hour: string, endHour: string) {
-    const event: Event = {
-      title: title,
-      date: date,
-      startHour: hour,
-      endHour: endHour
-    };
-    this.events.push(event);
-  }
+  addEvent(name: string, date: Date, description: string,place:string, category:string ,startTime: string, endTime: string) {
+      let type = "EVENT"
+      let isActive = true;
+      this.eventService.addEvent({type, name,  description,date, startTime, endTime, place, category, isActive} as Event)
+        .subscribe({
+          next: (event: Event) => {
+            if (this.events != undefined) {
+
+            }
+          },
+          error: () => {
+          },
+          complete: () => {
+            if (this.events != undefined) {
+              this.eventService.totalItems.next(this.events.length);
+              console.log(this.events.length);
+            }
+          }
+        })
+    }
+
 
 }

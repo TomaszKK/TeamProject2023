@@ -54,6 +54,9 @@ public class EventController {
     @PutMapping("/{id}")
     public ResponseEntity<Event> replaceEvent(@PathVariable Long id, @RequestBody Event newEvent) {
         Optional<Event> optionalEvent = eventRepository.findById(id);
+        System.out.println("in the put function");
+        System.out.println(optionalEvent);
+
         if (optionalEvent.isPresent()) {
             Event event = optionalEvent.get();
             // Set the fields of the existing event with the fields from the new event

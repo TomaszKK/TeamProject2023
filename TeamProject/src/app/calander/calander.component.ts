@@ -36,11 +36,13 @@ export class CalanderComponent implements OnInit{
   }
 
   calculateEventHeight(startHour: string, endHour: string): string {
+    console.log(startHour, endHour);
+    console.log("look above");
+
     const hourHeight = 20; // Height in pixels for each hour
     const start = parseInt(startHour, 10);
     const end = parseInt(endHour, 10);
     let eventHeight = ((end - start) * hourHeight) + (end - start);
-    //if((end - start) > 1){ eventHeight = eventHeight +  (2 *((end - start)))}
     console.log(start, end, eventHeight);
     return `${eventHeight}px`;
   }
@@ -83,10 +85,14 @@ export class CalanderComponent implements OnInit{
   }
 
   getEventsForDateAndHour(date: Date, hourIndex: number): Event[] {
-    //console.log("lookatme" + date);
+    //console.log("lookatme" + hourIndex);
+   for(let i = 0; i< this.events.length;i++){
+      this.events[i].date = new Date(this.events[i].date);
+    }
+   //console.log(this.events[0].startTime + ' '+ this.hours[hourIndex]);
     return this.events.filter(
       event =>
-        this.isSameDate(this.parseDate(event.date.toString()), date) &&
+        this.isSameDate(event.date, date) &&
         event.startTime === this.hours[hourIndex] &&
         this.isHourWithinRange(event.startTime, event.endTime, this.hours[hourIndex])
     );
@@ -94,7 +100,8 @@ export class CalanderComponent implements OnInit{
 
   private parseDate(dateString: string): Date {
     const [year, month, day] = dateString.split('-');
-    return new Date(Number(year), Number(month) - 1, Number(day));
+    console .log(Number(year), Number(month), Number(day))
+    return new Date(Number(year), Number(month), Number(day) );
   }
 
   private isSameDate(date1: Date, date2: Date): boolean {
@@ -106,6 +113,7 @@ export class CalanderComponent implements OnInit{
   }
 
   private isHourWithinRange(startHour: string, endHour: string, currentHour: string): boolean {
+    console.log("entered" + startHour + currentHour)
     return currentHour >= startHour && currentHour <= endHour;
   }
 
