@@ -73,16 +73,21 @@ export class CalanderComponent implements OnInit{
     return hours;
   }
 
-  addEvent(title: string, date: string, hour: string, endHour: string) {
-    // const event: Event = {
-    //   title: title,
-    //   date: date,
-    //   startHour: hour,
-    //   endHour: endHour
-    // };
+  addEvent(name: string, date: Date, startTime: string, endTime: string, description: string, place: string, category: string) {
+    name = name.trim();
+    startTime = startTime.trim();
+    endTime = endTime.trim();
+    description = description.trim();
+    place = place.trim();
+    category = category.trim();
 
-    // this.events.push(event);
+    this.eventService.add({ name, date, startTime, endTime, description, place, category } as Event).subscribe(
+      event => {
+        this.events.push(event);
+      }
+    );
   }
+
 
   getEventsForDateAndHour(date: Date, hourIndex: number): Event[] {
     //console.log("lookatme" + hourIndex);

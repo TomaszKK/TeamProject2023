@@ -12,7 +12,7 @@ public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private EventEnum type;
+    //private String type;
     private String name;
     private String description;
     private Date date;
@@ -24,17 +24,14 @@ public class Event {
     private Boolean isActive;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @JsonBackReference
     private List<User> participantsList;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
-    @JsonBackReference
     @JoinColumn(name = "organizer_id")
     private User organizer;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "schedule_id")
-    @JsonManagedReference
     private Schedule schedule;
 
     public Event() {
@@ -72,11 +69,11 @@ public class Event {
         return category;
     }
 
-
-    public EventEnum getType() {
+/*
+    public String getType() {
         return type;
     }
-
+*/
     public User getOrganizer() {
         return organizer;
     }
@@ -132,11 +129,11 @@ public class Event {
     public Boolean getActive() {
         return isActive;
     }
-
-    public void setType(EventEnum type) {
+/*
+    public void setType(String type) {
         this.type = type;
     }
-
+*/
     public void setIsActive(Boolean isActive){
         this.isActive = isActive;
     }

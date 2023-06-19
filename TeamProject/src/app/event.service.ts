@@ -26,13 +26,6 @@ getEvent(id: number):Observable<Event>{
     );
   }
 
-  addEvent(event: Event): Observable<Event> {
-    window.location.reload()
-    return this.http.post<Event>(this.eventUrl, event, httpOptions).pipe(
-      tap((newEvent: Event) => this.log(`added event w/ id=${newEvent.id}`)),
-      catchError(this.handleError<Event>('addEvent'))
-    );
-  }
 
   updateEvent(event: Event, id:number): Observable<Event> {
     window.location.reload()
@@ -41,7 +34,7 @@ getEvent(id: number):Observable<Event>{
       catchError(this.handleError<any>('updateEvent'))
     );
   }
-  addEvent(event: Event): Observable<Event> {
+  add(event: Event): Observable<Event> {
     return this.http.post<Event>(this.eventUrl, event, httpOptions).pipe(
       tap((eventAdded: Event) => this.log(`added event id=${eventAdded.id}`)),
       catchError(this.handleError<Event>('addEvent'))

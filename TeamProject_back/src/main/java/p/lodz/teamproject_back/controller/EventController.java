@@ -70,7 +70,7 @@ public class EventController {
             event.setOrganizer(newEvent.getOrganizer());
             event.setIsActive(newEvent.getIsActive());
             event.setParticipantsList(newEvent.getParticipantsList());
-            event.setType(newEvent.getType());
+          //  event.setType(newEvent.getType());
 
             // Save the updated event
             eventRepository.save(event);

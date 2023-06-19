@@ -40,6 +40,12 @@ public class User {
     @JsonManagedReference
     private Schedule schedule;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "organizer")
+    private Set<Event> events = new HashSet<>();
+
+    @ManyToMany(mappedBy = "participantsList")
+    private Set<Event> eventsParticipated = new HashSet<>();
+
     public User(@NotBlank @Size(min = 3, max = 100) String username, @NotBlank @Size(min = 3, max = 50) String name,
                 @NotBlank @Size(min = 3, max = 50) String surname, @NotBlank @Size(min = 3, max = 100) String password, Schedule schedule) {
         this.username = username;

@@ -19,7 +19,6 @@ public class Schedule {
     private User user;
 
     @OneToMany(mappedBy = "schedule", cascade = CascadeType.ALL)
-    @JsonBackReference
     private List<Event> eventList = new ArrayList<>();
 
     public Schedule() {

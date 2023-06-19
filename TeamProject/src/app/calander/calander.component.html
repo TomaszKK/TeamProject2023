@@ -43,15 +43,18 @@
 
 <!-- Add Event Modal -->
 <h3>Add Event</h3>
-<form (ngSubmit)="addEvent(form.value.title, form.value.date, form.value.hour, form.value.endHour)" #form="ngForm">
+<form (ngSubmit)="addEvent(form.value.title, form.value.date, form.value.startTime, form.value.endTime, form.value.description, form.value.place, form.value.category)" #form="ngForm">
   <input type="text" name="title" ngModel placeholder="Event Title" required>
   <input type="date" name="date" ngModel required>
-  <select name="hour" ngModel required>
+  <select name="startTime" ngModel required>
     <option *ngFor="let hour of hours" [value]="hour">{{ hour }}</option>
   </select>
-  <select name="endHour" ngModel required>
+  <select name="endTime" ngModel required>
     <option *ngFor="let hour of hours" [value]="hour">{{ hour }}</option>
   </select>
+  <textarea name="description" ngModel placeholder="Description" required></textarea>
+  <input type="text" name="place" ngModel placeholder="Place" required>
+  <input type="text" name="category" ngModel placeholder="Category" required>
   <button type="submit">Add</button>
 </form>
 
