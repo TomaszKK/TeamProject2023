@@ -1,6 +1,6 @@
 enum EventCategory {
   Lecture = 'Lecture',
-  Tutorials = 'Tutorial',
+  Tutorial = 'Tutorial',
   Lab = 'Lab',
   Casual = 'Casual',
   SchoolEvent = 'SchoolEvent'
