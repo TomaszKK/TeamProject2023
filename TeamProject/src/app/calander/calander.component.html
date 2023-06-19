@@ -23,13 +23,13 @@
         <td >{{ hour }}</td>
         <td *ngFor="let date of weekDates" (click)="showAddEventModal(date, hour)">
           <div class="event-container">
-            <div id="eventOne{{i}}"
+            <div id="eventOne{{i}}{{date}}"
               class="event"
               *ngFor="let event of getEventsForDateAndHour(date, i);"
 
               [style.height]="calculateEventHeight(event.startTime, event.endTime)"
               >
-              {{checkStyle(event.category, i)}}
+              {{checkStyle(event.category, i, date)}}
               {{ event.name }}
             </div>
           </div>

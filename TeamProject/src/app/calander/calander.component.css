@@ -100,21 +100,49 @@ button:hover {
   justify-content: center;
 
 }
-.event.classStyle{
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+.event.labStyle{
+  /*position: absolute;*/
+  /*top: 0;*/
+  /*left: 0;*/
+  /*right: 0;*/
+  /*bottom: 0;*/
 
-  background-color: #076557;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background-color: #23436b;
+  /*overflow: hidden;*/
+  /*text-overflow: ellipsis;*/
+  /*white-space: nowrap;*/
+  /*display: flex;*/
+  /*align-items: center;*/
+  /*justify-content: center;*/
 
+}
+.event.LectureStyle{
+  /*position: absolute;*/
+  /*top: 0;*/
+  /*left: 0;*/
+  /*right: 0;*/
+  /*bottom: 0;*/
+
+  background-color: #2fa414;
+  /*overflow: hidden;*/
+  /*text-overflow: ellipsis;*/
+  /*white-space: nowrap;*/
+  /*display: flex;*/
+  /*align-items: center;*/
+  /*justify-content: center;*/
+
+}
+
+.event.tutorialStyle{
+  background-color: #b70a0a;
+
+}
+.event.casualStyle{
+  background-color: #b46b0e;
+
+}
+.event.SEventStyle{
+  background-color: #a90ea1;
 
 }
 
