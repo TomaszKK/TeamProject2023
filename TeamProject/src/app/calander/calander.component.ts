@@ -29,21 +29,44 @@ export class CalanderComponent implements OnInit{
   ngOnInit(){
 
   }
+  checkStyle(holder: string, loop: number/* day: number*/){
+
+    //console.log("in function");
+    //console.log(holder);
+    let placeHolder = "eventOne" + loop;
+
+    var ele = document.getElementById(placeHolder);
+  //  console.log("ele " + ele);
+    if (holder ==  "music" && ele != null) {
+      ele.classList.add("musicStyle");
+    }
+    if (holder ==  "Class" && ele != null) {
+    //  console.log("VICTORY");
+      ele.classList.add("classStyle");
+    }
+
+  //  console.log("-----");
+  }
+
+
   debug(){
 
-    console.log(this.events[0].description);
+    console.log(this.events[0].category);
+    console.log(this.events[1].category);
+    console.log(this.events[2].category);
+    console.log(this.events[3].category);
 
   }
 
   calculateEventHeight(startHour: string, endHour: string): string {
-    console.log(startHour, endHour);
-    console.log("look above");
+    //console.log(startHour, endHour);
+    //console.log("look above");
 
     const hourHeight = 20; // Height in pixels for each hour
     const start = parseInt(startHour, 10);
     const end = parseInt(endHour, 10);
     let eventHeight = ((end - start) * hourHeight) + (end - start);
-    console.log(start, end, eventHeight);
+    //console.log(start, end, eventHeight);
     return `${eventHeight}px`;
   }
   calculateRowSpan(startHour: string, endHour: string): number {
@@ -118,7 +141,7 @@ export class CalanderComponent implements OnInit{
   }
 
   private isHourWithinRange(startHour: string, endHour: string, currentHour: string): boolean {
-    console.log("entered" + startHour + currentHour)
+   // console.log("entered" + startHour + currentHour)
     return currentHour >= startHour && currentHour <= endHour;
   }
 

@@ -1,7 +1,7 @@
 
 export class Event{
   id?: number;
- // type: string;
+  type: string;
   name: string;
   description: string;
   date: Date;
@@ -14,7 +14,7 @@ export class Event{
  // isActive: Boolean;
 
   constructor(type: string, name:string, description:string, date:Date,startTime:string, endTime:string, place:string, category:string, isActive:Boolean) {
-  //this.type = type;
+  this.type = type;
   this.name = name;
   this.description = description;
   this.date = date;

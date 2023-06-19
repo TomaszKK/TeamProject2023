@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild  } from '@angular/core';
 import {EventService} from "../event.service";
 import {Event} from "../event.model";
+import { NgForm } from '@angular/forms';
 
 // interface Event {
 //   title: string;
@@ -14,6 +15,7 @@ import {Event} from "../event.model";
   styleUrls: ['./activity.component.css']
 })
 export class ActivityComponent {
+  @ViewChild('form') form: NgForm | undefined;
 
   weekDates: Date[];
   events: Event[];
@@ -68,7 +70,10 @@ export class ActivityComponent {
             }
           }
         })
-    }
+    // @ts-ignore
+    this.form.resetForm();
+
+  }
 
 
 }
