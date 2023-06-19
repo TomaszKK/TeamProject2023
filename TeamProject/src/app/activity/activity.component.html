@@ -1,43 +1,4 @@
-<!--<!DOCTYPE html>
-<html>
-<head>
-  <title>Create New Activity</title>
-</head>
-<body>
-<h1>Create New Activity</h1>
 
-<form>
-  <label for="activity-name">Activity Name:</label>
-  <input type="text" id="activity-name" name="activity-name"><br><br>
-
-  <label for="location">Location:</label>
-  <input type="text" id="location" name="location"><br><br>
-
-  <label for="time-frame">Time Frame:</label>
-  <input type="text" id="time-frame" name="time-frame"><br><br>
-
-  <label for="description">Description:</label>
-  <textarea id="description" name="description"></textarea><br><br>
-
-  <button type="button" onclick="inviteFriends()">Invite Friends</button>
-  <button type="button" onclick="addMore()">Confirm</button>
-</form>
-
-<script>
-  function inviteFriends() {
-    // To do
-    alert("Friends invited");
-  }
-
-  function addMore() {
-    // To do
-    alert("Confirmed");
-  }
-</script>
-</body>
-</html> -->
-
-<!-- Add Event Modal -->
 <div class="modal">
   <h3>Add Event</h3>
   <form (ngSubmit)="addEvent(form.value.title, form.value.date, form.value.description, form.value.place,form.value.category ,form.value.hour, form.value.endHour)" #form="ngForm">
@@ -59,7 +20,14 @@
     </div>
     <div class="form-group">
       <label for="category">Category</label>
-      <input type="category" name="category" id="category" ngModel required>
+      <select name="category" id="category" ngModel required>
+        <option value="" disabled selected>Select a category</option>
+        <option value="Lecture">Lecture</option>
+        <option value="Tutorial">Tutorial</option>
+        <option value="Lab">Lab</option>
+        <option value="Casual">Casual</option>
+        <option value="SchoolEvent">SchoolEvent</option>
+      </select>
     </div>
     <div class="form-group">
       <label for="hour">Start Hour</label>

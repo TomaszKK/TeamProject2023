@@ -29,23 +29,32 @@ export class CalanderComponent implements OnInit{
   ngOnInit(){
 
   }
-  checkStyle(holder: string, loop: number/* day: number*/){
+  checkStyle(holder: string, loop: number, day: Date){
 
     //console.log("in function");
-    //console.log(holder);
-    let placeHolder = "eventOne" + loop;
+    console.log(holder);
+    let placeHolder = "eventOne" + loop + day;
 
     var ele = document.getElementById(placeHolder);
   //  console.log("ele " + ele);
-    if (holder ==  "music" && ele != null) {
-      ele.classList.add("musicStyle");
+    if (holder ==  "Lecture" && ele != null) {
+      console.log("lecture");
+      ele.classList.add("LectureStyle");
     }
-    if (holder ==  "Class" && ele != null) {
+    if (holder ==  "Lab" && ele != null) {
     //  console.log("VICTORY");
-      ele.classList.add("classStyle");
+      ele.classList.add("labStyle");
     }
-
-  //  console.log("-----");
+    if (holder == "Tutorial" && ele != null){
+      ele.classList.add("tutorialStyle");
+    }
+    if (holder == "Casual" && ele != null){
+      ele.classList.add("casualStyle");
+    }
+    if (holder == "SchoolEvent" && ele != null){
+      ele.classList.add("SEventStyle");
+    }
+    console.log("-----");
   }
 
 
@@ -55,6 +64,7 @@ export class CalanderComponent implements OnInit{
     console.log(this.events[1].category);
     console.log(this.events[2].category);
     console.log(this.events[3].category);
+    console.log(this.events[4].category);
 
   }
 
