@@ -1,56 +1,29 @@
-<!--<h1>{{title}}</h1>
-<style>
-  .button-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    flex-wrap: wrap;
-    margin-bottom: 20px;
-  }
-</style>
-
-<div class="button-container">
-  <div>
-    <button [routerLink]="['/company']">CompanyView</button>
-  </div>
-  <div>
-    <button [routerLink]="['/calender']">CalendarView</button>
-  </div>
-</div>
-
-
-<router-outlet></router-outlet> -->
 <h1>{{title}}</h1>
-<style>
-  .button-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    flex-wrap: wrap;
-    margin-bottom: 20px;
-  }
 
-  .button-container button {
-    padding: 10px 20px;
-    background-color: #8B0000;
-    color: white;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-  }
-</style>
-
-<div class="button-container">
-  <div>
-    <button [routerLink]="['/company']">CompanyView</button>
+<div class="topbar">
+  <div class="burger-menu">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
   </div>
-  <div>
-    <button [routerLink]="['/calender']">CalendarView</button>
+
+  <div class="button-container">
+    <div>
+      <button [routerLink]="['/calender']" routerLinkActive="active">Manage Schedule</button>
+    </div>
+    <div>
+      <button [routerLink]="['/eventsList']">Events</button>
+    </div>
+    <div>
+      <button [routerLink]="['/chat']">Chat</button>
+    </div>
+    <div>
+      <button [routerLink]="['/profile']">
+        <img srcset="userProfile.jpg" alt="Profile Image">
+        Profile
+      </button>
+    </div>
   </div>
 </div>
 
 <router-outlet></router-outlet>
-
-
