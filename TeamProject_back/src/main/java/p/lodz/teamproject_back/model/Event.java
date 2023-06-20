@@ -82,7 +82,7 @@ public class Event {
         return participantsList;
     }
 
-    public Boolean getIsActive(){
+    public Boolean isActive(){
         return isActive;
     }
 
@@ -126,15 +126,7 @@ public class Event {
         return isRepeated;
     }
 
-    public Boolean getActive() {
-        return isActive;
-    }
-/*
-    public void setType(String type) {
-        this.type = type;
-    }
-*/
-    public void setIsActive(Boolean isActive){
+    public void setActive(Boolean isActive){
         this.isActive = isActive;
     }
 
