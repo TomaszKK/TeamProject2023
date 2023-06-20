@@ -54,8 +54,8 @@ export class ActivityComponent {
 
   addEvent(name: string, date: Date, description: string,place:string, category:string ,startTime: string, endTime: string) {
       let type = "EVENT"
-      let isActive = true;
-      this.eventService.add({type, name,  description,date, startTime, endTime, place, category, isActive} as Event)
+      let active = true;
+      this.eventService.add({type, name,  description,date, startTime, endTime, place, category, active} as Event)
         .subscribe({
           next: (event: Event) => {
             if (this.events != undefined) {

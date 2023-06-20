@@ -1,0 +1,32 @@
+/*.event-background {*/
+/*  background-color: #712C6B;*/
+/*  border-radius: 10px;*/
+/*  padding: 20px;*/
+/*  color: black;*/
+/*  display: flex;*/
+/*  justify-content: center;*/
+/*  align-items: center;*/
+/*}*/
+
+.event {
+  background-color: #DEE2E6;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+  width: 400px; /* Adjust the width as per your requirement */
+  margin: 0 auto; /* Center the event container */
+}
+
+h3 {
+  font-weight: bold;
+}
+
+.join-event {
+  float: right;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}

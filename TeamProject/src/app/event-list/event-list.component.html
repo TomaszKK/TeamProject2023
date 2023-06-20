@@ -1,1 +1,16 @@
-<p>event-list works!</p>
+<div class="event-background">
+  <div *ngIf="events">
+    <ul *ngFor="let event of events">
+      <div *ngIf="!event.active">
+        <div class="event">
+          <h3>{{event.name}}</h3>
+          <button class="join-event">Join Event</button>
+          <strong>Location: </strong>{{event.place}}
+          <strong>Time: </strong>{{ event.startTime }} - {{ event.endTime }}
+          <strong>Date: </strong>{{ event.date | date: 'MMM d' }}
+          <p>{{event.description}}</p>
+        </div>
+      </div>
+    </ul>
+  </div>
+</div>
