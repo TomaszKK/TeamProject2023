@@ -2,6 +2,7 @@ import { Component, OnInit,ViewChild  } from '@angular/core';
 import {EventService} from "../event.service";
 import {Event} from "../event.model";
 import { NgForm } from '@angular/forms';
+import {Router} from "@angular/router";
 
 // interface Event {
 //   title: string;
@@ -22,7 +23,7 @@ export class ActivityComponent {
   currentWeekStartDate: Date;
   hours: string[];
 
-  constructor(private eventService: EventService) {
+  constructor(private eventService: EventService,  private router: Router) {
     this.currentWeekStartDate = new Date();
     this.weekDates = this.getWeekDates(this.currentWeekStartDate);
     this.events = [];
@@ -67,6 +68,7 @@ export class ActivityComponent {
             if (this.events != undefined) {
               this.eventService.totalItems.next(this.events.length);
               console.log(this.events.length);
+              this.router.navigate(['/calender']);
             }
           }
         })
