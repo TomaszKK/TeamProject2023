@@ -68,7 +68,7 @@ public class EventController {
             event.setPlace(newEvent.getPlace());
             event.setCategory(newEvent.getCategory());
             event.setOrganizer(newEvent.getOrganizer());
-            event.setIsActive(newEvent.getIsActive());
+            event.setActive(newEvent.isActive());
             event.setParticipantsList(newEvent.getParticipantsList());
           //  event.setType(newEvent.getType());
 
@@ -111,8 +111,8 @@ public class EventController {
             if(updatedEvent.getOrganizer() != null) {
                 event.setOrganizer(updatedEvent.getOrganizer());
             }
-            if(updatedEvent.getIsActive() != null) {
-                event.setIsActive(updatedEvent.getIsActive());
+            if(updatedEvent.isActive() != null) {
+                event.setActive(updatedEvent.isActive());
             }
             if(updatedEvent.getOrganizer() != null) {
                 event.setOrganizer(updatedEvent.getOrganizer());

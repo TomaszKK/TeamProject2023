@@ -11,6 +11,7 @@ import {ActivityComponent} from "./activity/activity.component";
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import {NgOptimizedImage} from "@angular/common";
+import { EventListComponent } from './event-list/event-list.component';
 
 
 
@@ -20,7 +21,8 @@ import {NgOptimizedImage} from "@angular/common";
     EventComponent,
     CalanderComponent,
     CompanyComponent,
-    ActivityComponent
+    ActivityComponent,
+    EventListComponent
   ],
   imports: [
     // CommonModule,
