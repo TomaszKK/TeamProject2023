@@ -9,8 +9,8 @@ import {ActivityComponent} from "./activity/activity.component";
 const routes: Routes = [
   {path: 'calender', component: CalanderComponent},
   {path: 'company', component: CompanyComponent},
-  {path: 'addActivity', component: ActivityComponent}
-
+  {path: 'addActivity', component: ActivityComponent},
+  {path: '', redirectTo: '/calender', pathMatch: 'full'}
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

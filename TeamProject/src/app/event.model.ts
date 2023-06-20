@@ -29,7 +29,6 @@ export class Event{
   this.place = place;
   this.category = category;
   //this. isActive = isActive;
-
   }
 
 }
