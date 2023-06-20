@@ -17,7 +17,7 @@ export class Event{
   place: string;
   category: EventCategory;
   // isRepeated: Boolean;
- isActive: Boolean;
+  isActive: Boolean;
 
   constructor(type: string, name:string, description:string, date:Date,startTime:string, endTime:string, place:string, category:EventCategory, isActive:Boolean) {
   this.type = type;

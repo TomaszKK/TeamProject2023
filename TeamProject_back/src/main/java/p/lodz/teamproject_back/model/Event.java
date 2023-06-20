@@ -69,11 +69,8 @@ public class Event {
         return category;
     }
 
-/*
-    public String getType() {
-        return type;
-    }
-*/
+
+
     public User getOrganizer() {
         return organizer;
     }
@@ -118,15 +115,14 @@ public class Event {
         this.category = category;
     }
 
-    public void setRepeated(Boolean repeated) {
-        isRepeated = repeated;
-    }
 
-    public Boolean getRepeated() {
-        return isRepeated;
-    }
 
-    public void setActive(Boolean isActive){
+/*
+    public void setType(String type) {
+        this.type = type;
+    }
+*/
+    public void setIsActive(Boolean isActive){
         this.isActive = isActive;
     }
 
