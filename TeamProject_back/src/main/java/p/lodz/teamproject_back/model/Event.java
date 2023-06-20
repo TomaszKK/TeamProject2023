@@ -14,6 +14,7 @@ public class Event {
     private Long id;
     //private String type;
     private String name;
+    @Column(columnDefinition = "VARCHAR(10000)")
     private String description;
     private Date date;
     private String startTime;

@@ -28,7 +28,7 @@ export class Event{
   this.endTime = endTime;
   this.place = place;
   this.category = category;
-  this. active = active;
+  this.active = active;
 
   }
 

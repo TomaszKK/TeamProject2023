@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {EventService} from "../event.service";
 import {Event} from "../event.model";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-event-list',
@@ -11,7 +12,7 @@ export class EventListComponent {
 
   events?: Event[];
 
-  constructor(private eventService: EventService) {
+  constructor(private eventService: EventService, private router: Router) {
   }
 
   ngOnInit() {
@@ -23,4 +24,10 @@ export class EventListComponent {
     )
   }
 
+  joinEvent(event: Event) {
+    event.active = true;
+
+    // Navigate to the calendar route
+    this.router.navigate(['/calendar']);
+  }
 }

@@ -3,12 +3,14 @@
     <ul *ngFor="let event of events">
       <div *ngIf="!event.active">
         <div class="event">
-          <h3>{{event.name}}</h3>
-          <button class="join-event">Join Event</button>
-          <strong>Location: </strong>{{event.place}}
-          <strong>Time: </strong>{{ event.startTime }} - {{ event.endTime }}
-          <strong>Date: </strong>{{ event.date | date: 'MMM d' }}
-          <p>{{event.description}}</p>
+          <h3 class="event-name">{{event.name}}</h3>
+          <div class="event-details">
+            <div><strong>Location:</strong> {{event.place}}</div>
+            <div><strong>Time:</strong> {{ event.startTime }} - {{ event.endTime }}</div>
+            <div><strong>Date:</strong> {{ event.date | date: 'MMM d' }}</div>
+          </div>
+          <p class="event-description">{{event.description}}</p>
+          <button class="join-event" (click)="joinEvent(event)">Join Event</button>
         </div>
       </div>
     </ul>

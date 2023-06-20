@@ -59,7 +59,6 @@ export class ActivityComponent {
         .subscribe({
           next: (event: Event) => {
             if (this.events != undefined) {
-
             }
           },
           error: () => {

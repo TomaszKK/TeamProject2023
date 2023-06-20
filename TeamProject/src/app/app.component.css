@@ -9,6 +9,7 @@
   display: flex;
   align-items: center;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .button-container div {
