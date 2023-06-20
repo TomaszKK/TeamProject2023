@@ -30,4 +30,30 @@ export class EventListComponent {
     // Navigate to the calendar route
     this.router.navigate(['/calendar']);
   }
+  updatEvent(event: Event): void {
+    event.active = true;
+    let  id = event.id;
+    if (id != undefined) {
+      this.eventService.updateEvent(event, id)
+        .subscribe({
+          next: (event: Event) => {
+            if (this.events != undefined) {
+
+              this.eventService.getEvents().subscribe(events => {
+                this.events = events
+
+              });
+            }
+          },
+          error: () => {
+          },
+          complete: () => {
+            if (this.events != undefined) {
+              this.eventService.totalItems.next(this.events.length);
+              console.log(this.events.length);
+            }
+          }
+        })
+    }
+  }
 }

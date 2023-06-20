@@ -10,7 +10,7 @@
             <div><strong>Date:</strong> {{ event.date | date: 'MMM d' }}</div>
           </div>
           <p class="event-description">{{event.description}}</p>
-          <button class="join-event" (click)="joinEvent(event)">Join Event</button>
+          <button class="join-event" (click)="updatEvent(event)">Join Event</button>
         </div>
       </div>
     </ul>

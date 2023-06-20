@@ -23,15 +23,16 @@
     <tbody>
     <ng-container *ngFor="let hour of hours; let i = index">
       <tr>
-        <td >{{ hour }}</td>
-        <td *ngFor="let date of weekDates" (click)="showAddEventModal(date, hour)">
+        <td class="hourCell">{{ hour }}</td>
+        <td *ngFor="let date of weekDates">
           <div class="event-container">
             <div id="eventOne{{i}}{{date}}"
               class="event"
               *ngFor="let event of getEventsForDateAndHour(date, i);"
 
               [style.height]="calculateEventHeight(event.startTime, event.endTime)"
-              >
+                 (click)="showPopup(event)"
+            >
               {{checkStyle(event.category, i, date)}}
               {{ event.name }}
             </div>
@@ -44,7 +45,16 @@
 </div>
 
 
-
+<div id="popup-content" class="popup" *ngIf="selectedEvent">
+  <div class="popup-content">
+    <h2>Event Details</h2>
+    <p>{{ selectedEvent.name }}</p>
+    <p>{{ selectedEvent.date }}</p>
+    <p>{{ selectedEvent.description }}</p>
+    <button (click)="updatEvent(selectedEvent)">Delete</button>
+    <button (click)="closePopup()">Close</button>
+  </div>
+</div>
 <!-- Add Event Modal -->
 <!--<h3>Add Event</h3>-->
 <!--<form (ngSubmit)="addEvent(form.value.title, form.value.date, form.value.startTime, form.value.endTime, form.value.description, form.value.place, form.value.category)" #form="ngForm">-->

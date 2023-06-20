@@ -26,10 +26,24 @@ getEvent(id: number):Observable<Event>{
     );
   }
 
-
+  deleteEvent(event: Event | number): Observable<Event> {
+    const id = typeof event === 'number' ? event : event.id;
+    const url = `${this.eventUrl}/${id}`;
+    return this.http.delete<Event>(url, httpOptions).pipe(
+      tap(_ => this.log(`deleted event id=${id}`)),
+      catchError(this.handleError<Event>('deleteEvent'))
+    );
+  }
+  // updateStudent(event: Event, id:number): Observable<Event> {
+  //   //window.location.reload()
+  //   return this.http.patch<Event>(`${this.eventUrl}/${id}`, event, httpOptions).pipe(
+  //     tap(_ => this.log(`updated event id=${event.id}`)), // same as the line below
+  //     catchError(this.handleError<any>('updateEvent'))
+  //   );
+  // }
   updateEvent(event: Event, id:number): Observable<Event> {
-    window.location.reload()
-    return this.http.put<Event>(`${this.eventUrl}/${id}`, event, httpOptions).pipe(
+    //window.location.reload()
+    return this.http.patch<Event>(`${this.eventUrl}/${id}`, event, httpOptions).pipe(
       tap(_ => this.log(`updated event id=${event.id}`)),
       catchError(this.handleError<any>('updateEvent'))
     );

@@ -19,6 +19,26 @@ export class CalanderComponent implements OnInit{
   currentWeekStartDate: Date;
   hours: string[];
 
+  selectedEvent: Event | null = null;
+
+  showPopup(event: Event) {
+    this.selectedEvent = event;
+    const popup = document.getElementById("popup-content");
+    console.log(popup);
+    if (popup) {
+      console.log("inPopup2");
+      popup.style.display = 'block';
+    }
+  }
+
+  closePopup() {
+    this.selectedEvent = null;
+    const popup = document.getElementById('popup');
+    if (popup) {
+      popup.style.display = 'none';
+    }
+  }
+
   constructor(private eventService: EventService) {
     this.currentWeekStartDate = new Date();
     this.weekDates = this.getWeekDates(this.currentWeekStartDate);
@@ -31,18 +51,13 @@ export class CalanderComponent implements OnInit{
   }
   checkStyle(holder: string, loop: number, day: Date){
 
-    //console.log("in function");
-    console.log(holder);
     let placeHolder = "eventOne" + loop + day;
 
     var ele = document.getElementById(placeHolder);
-  //  console.log("ele " + ele);
     if (holder ==  "Lecture" && ele != null) {
-      console.log("lecture");
       ele.classList.add("LectureStyle");
     }
     if (holder ==  "Lab" && ele != null) {
-    //  console.log("VICTORY");
       ele.classList.add("labStyle");
     }
     if (holder == "Tutorial" && ele != null){
@@ -54,7 +69,6 @@ export class CalanderComponent implements OnInit{
     if (holder == "SchoolEvent" && ele != null){
       ele.classList.add("SEventStyle");
     }
-    console.log("-----");
   }
 
 
@@ -69,14 +83,12 @@ export class CalanderComponent implements OnInit{
   }
 
   calculateEventHeight(startHour: string, endHour: string): string {
-    //console.log(startHour, endHour);
-    //console.log("look above");
 
-    const hourHeight = 20; // Height in pixels for each hour
+
+    const hourHeight = 20;
     const start = parseInt(startHour, 10);
     const end = parseInt(endHour, 10);
     let eventHeight = ((end - start) * hourHeight) + (end - start);
-    //console.log(start, end, eventHeight);
     return `${eventHeight}px`;
   }
   calculateRowSpan(startHour: string, endHour: string): number {
@@ -121,21 +133,6 @@ export class CalanderComponent implements OnInit{
     );
   }
 
-/*
-  getEventsForDateAndHour(date: Date, hourIndex: number): Event[] {
-    //console.log("lookatme" + hourIndex);
-   for(let i = 0; i< this.events.length;i++){
-      this.events[i].date = new Date(this.events[i].date);
-    }
-   //console.log(this.events[0].startTime + ' '+ this.hours[hourIndex]);
-    return this.events.filter(
-      event =>
-        this.isSameDate(event.date, date) &&
-        event.startTime === this.hours[hourIndex] &&
-        this.isHourWithinRange(event.startTime, event.endTime, this.hours[hourIndex])
-    );
-  }
-*/
   private parseDate(dateString: string): Date {
     const [year, month, day] = dateString.split('-');
     console .log(Number(year), Number(month), Number(day))
@@ -174,17 +171,7 @@ export class CalanderComponent implements OnInit{
     console.log('Selected Hour:', formattedHour);
 
     const title = prompt('Enter event title:');
-    // if (title) {
-    //   console.log("LOOK");
-    //   const event: Event = {
-    //     title: title,
-    //     date: formattedDate,
-    //     startHour: formattedHour,
-    //     endHour: formattedHour
-    //   };
-    //
-    //   this.events.push(event);
-    // }
+
   }
 
   private formatDate(date: Date): string {
@@ -212,7 +199,33 @@ export class CalanderComponent implements OnInit{
         event.active === true
     );
   }
+  updatEvent(event: Event): void {
+    this.closePopup();
+    event.active = false;
+    let  id = event.id;
+    if (id != undefined) {
+      this.eventService.updateEvent(event, id)
+        .subscribe({
+          next: (event: Event) => {
+            if (this.events != undefined) {
 
+              this.eventService.getEvents().subscribe(events => {
+                this.events = events
+
+              });
+            }
+          },
+          error: () => {
+          },
+          complete: () => {
+            if (this.events != undefined) {
+              this.eventService.totalItems.next(this.events.length);
+              console.log(this.events.length);
+            }
+          }
+        })
+    }
+  }
 /*
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {EVENTLIST} from '../mock-events';
