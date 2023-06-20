@@ -116,13 +116,7 @@ public class Event {
     }
 
 
-
-/*
-    public void setType(String type) {
-        this.type = type;
-    }
-*/
-    public void setIsActive(Boolean isActive){
+    public void setActive(Boolean isActive){
         this.isActive = isActive;
     }
 
