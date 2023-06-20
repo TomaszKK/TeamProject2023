@@ -121,7 +121,7 @@ export class CalanderComponent implements OnInit{
     );
   }
 
-
+/*
   getEventsForDateAndHour(date: Date, hourIndex: number): Event[] {
     //console.log("lookatme" + hourIndex);
    for(let i = 0; i< this.events.length;i++){
@@ -135,7 +135,7 @@ export class CalanderComponent implements OnInit{
         this.isHourWithinRange(event.startTime, event.endTime, this.hours[hourIndex])
     );
   }
-
+*/
   private parseDate(dateString: string): Date {
     const [year, month, day] = dateString.split('-');
     console .log(Number(year), Number(month), Number(day))
@@ -198,6 +198,20 @@ export class CalanderComponent implements OnInit{
       .subscribe(events => this.events = events);
   }
 
+  getEventsForDateAndHour(date: Date, hourIndex: number): Event[] {
+    //console.log("lookatme" + hourIndex);
+    for (let i = 0; i < this.events.length; i++) {
+      this.events[i].date = new Date(this.events[i].date);
+    }
+    //console.log(this.events[0].startTime + ' '+ this.hours[hourIndex]);
+    return this.events.filter(
+      event =>
+        this.isSameDate(event.date, date) &&
+        event.startTime === this.hours[hourIndex] &&
+        this.isHourWithinRange(event.startTime, event.endTime, this.hours[hourIndex]) &&
+        event.active === true
+    );
+  }
 
 /*
 import { Component, OnInit, ViewChild } from '@angular/core';
