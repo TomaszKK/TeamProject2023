@@ -64,13 +64,14 @@ th {
   right: 0;
   bottom: 0;
   background-color: #8B0000;
-  color: #fff;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 12px;
+  font-weight: bold;
 }
 
 .event:hover {
@@ -96,23 +97,33 @@ button:hover {
 }
 
 .event.labStyle {
-  background-color: #23436b;
+  background-color: white;
+  color: #23436b;
+  box-shadow: inset 0 0 0 3px #23436b;
 }
 
 .event.LectureStyle {
-  background-color: #2fa414;
+  background-color: white;
+  color: #2fa414;
+  box-shadow: inset 0 0 0 3px #2fa414;
 }
 
 .event.tutorialStyle {
-  background-color: #b70a0a;
+  background-color: white;
+  color: #b70a0a;
+  box-shadow: inset 0 0 0 3px #b70a0a;
 }
 
 .event.casualStyle {
-  background-color: #b46b0e;
+  background-color: white;
+  color: #b46b0e;
+  box-shadow: inset 0 0 0 3px #b46b0e;
 }
 
 .event.SEventStyle {
-  background-color: #a90ea1;
+  background-color: white;
+  color: #a90ea1;
+  box-shadow: inset 0 0 0 3px #a90ea1;
 }
 
 .week-row {
