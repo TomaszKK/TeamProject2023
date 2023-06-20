@@ -1,8 +1,9 @@
 .topbar {
   display: flex;
   align-items: center;
-  padding: 10px;
+  padding: 15px;
   background: linear-gradient(to right, #712C6B, #ffffff);
+  box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.2);
 }
 .button-container {
   display: flex;

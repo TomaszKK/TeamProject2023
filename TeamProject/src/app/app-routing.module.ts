@@ -10,8 +10,8 @@ import {EventListComponent} from "./event-list/event-list.component";
 const routes: Routes = [
   {path: 'calender', component: CalanderComponent},
   {path: 'company', component: CompanyComponent},
-  {path: 'eventsList', component: EventListComponent}
-  {path: '', redirectTo: '/calender', pathMatch: 'full'}
+  {path: 'eventsList', component: EventListComponent},
+  {path: '', redirectTo: '/calender', pathMatch: 'full'},
   {path: 'addActivity', component: ActivityComponent},
 ];
 @NgModule({
